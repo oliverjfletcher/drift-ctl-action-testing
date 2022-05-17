@@ -56,5 +56,5 @@ scan_output="${scan_output//$'\n'/'%0A'}"
 echo "::set-output name=driftctl::$scan_output"
 
 # Finally we run the scan command
-echo $scan_output
+echo "${scan_output//$'\n'/'%0A'}"
 

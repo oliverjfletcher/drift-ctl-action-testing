@@ -52,7 +52,7 @@ scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
 # Escape scan output to handle multilines
 scan_output="${scan_output//$'\n'/'%0A'}"
 
-echo -e $scan_output
+printf $scan_output
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

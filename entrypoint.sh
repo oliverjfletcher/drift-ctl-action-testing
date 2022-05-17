@@ -55,6 +55,6 @@ scan_output="${scan_output//$'\n'/'%0A'}"
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"
 
-# Finally we echo the scan output for those consuming via the runner
-echo $scan_output
+# # Finally we echo the scan output for those consuming via the runner
+# echo $scan_output
 

@@ -47,9 +47,9 @@ qflag=""
 quiet_flag
 
 # Store scan output in variable 
-scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
+scan_output="`driftctl scan $qflag $INPUT_ARGS`"
 
-echo "`$scan_output`"
+echo $scan_output
 
 # Escape scan output to handle multilines
 scan_output="${scan_output//$'\n'/'%0A'}"

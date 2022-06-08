@@ -55,6 +55,7 @@ scan_output() {
   echo -e $scan_output
 }
 
+echo -e $(scan_output)
 
 scan_output=$(scan_output)
 

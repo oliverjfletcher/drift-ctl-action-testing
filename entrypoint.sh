@@ -65,7 +65,7 @@ scan_output() {
 #   echo $output
 # }
 
-scan_ouput
+scan_output
 # scan_format
 
 # Set output to be used for other Github Actions jobs

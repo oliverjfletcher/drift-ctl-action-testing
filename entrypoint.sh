@@ -49,6 +49,7 @@ quiet_flag
 scan_output() {
   # Store scan output in variable 
   scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
+  echo $scan_ouput
   ret_code=$?
   return $ret_code
 }
@@ -56,7 +57,7 @@ scan_output() {
 #Run scan_ouput function and store in var
 scan_output=$(scan_output)
 
-echo -e $scan_output
+echo $scan_output
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

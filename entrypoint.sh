@@ -53,9 +53,9 @@ scan_output() {
   # Store scan output in variable 
   command scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
   # Escape scan output to handle multilines
-  command scan_output="${output//$'\n'/'%0A'}"
+  command scan_output="${scan_output//$'\n'/'%0A'}"
   # echo out scan_ouput
-  command echo -e $output
+  command echo -e $scan_output
 }
 
 # scan_format() {

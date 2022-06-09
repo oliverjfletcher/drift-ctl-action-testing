@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 log_error() {
   echo $1

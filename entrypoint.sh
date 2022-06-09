@@ -46,7 +46,7 @@ install_driftctl || log_error "Fail to install driftctl"
 qflag=""
 quiet_flag
 
-# Get exit code for scan and format output
+# Get exit code for scan, format output and set ouput
 scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
   if [[ $? -ne 0 || -ne 1 ]]; then
@@ -54,10 +54,8 @@ scan_output(){
   else
     echo "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
+    echo "::set-output name=driftctl::$scan_output"
   fi
 }
 # Run scan function to run scan
 scan_output=$(scan_output)
-
-# Set output to be used for other Github Actions jobs
-echo "::set-output name=driftctl::$scan_output"

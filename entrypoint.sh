@@ -46,27 +46,15 @@ install_driftctl || log_error "Fail to install driftctl"
 qflag=""
 quiet_flag
 
-
-
-
 scan_output() {
   # Store scan output in variable 
   command scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
-  # Escape scan output to handle multilines
-  command scan_output="${scan_output//$'\n'/'%0A'}"
   # echo out scan_ouput
   command echo -e $scan_output
 }
 
-# scan_format() {
-#   local output=$(scan_ouput)
-#   scan_output="${output//$'\n'/'%0A'}"
-#   # echo out scan_ouput
-#   echo $output
-# }
-
+#Run scan_ouput function and store in var
 scan_output=$(scan_output)
-# scan_format
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

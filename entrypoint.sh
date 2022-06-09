@@ -50,7 +50,7 @@ quiet_flag
 scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
   if [ $? eq 2 ]; then
-    exit 1
+    return
   else
     echo "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"

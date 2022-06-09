@@ -48,9 +48,9 @@ quiet_flag
 
 scan_output() {
   # Store scan output in variable 
-  command scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
+  scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
   # echo out scan_ouput
-  command echo -e $scan_output
+  command echo $scan_output
 }
 
 #Run scan_ouput function and store in var

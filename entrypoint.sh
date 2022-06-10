@@ -53,13 +53,13 @@ scan_output(){
   exit_code=$?
   if [[ $exit_code -eq 0 || $exit_code -eq 1 && $arg1 != "val1" ]]; then
     scan_output="${scan_output//'%'/'%25'}"
-    scan_output="${scan_output//$'\n'/'%0A'}"
+    # scan_output="${scan_output//$'\n'/'%0A'}"
     scan_output="${scan_output//$'\r'/'%0D'}"
     echo -e "$scan_output"
     exit 1
   else
     scan_output="${scan_output//'%'/'%25'}"
-    scan_output="${scan_output//$'\n'/'%0A'}"
+    # scan_output="${scan_output//$'\n'/'%0A'}"
     scan_output="${scan_output//$'\r'/'%0D'}"
     echo -e "$scan_output"
     exit 1

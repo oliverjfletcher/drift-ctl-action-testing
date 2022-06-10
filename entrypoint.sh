@@ -67,7 +67,7 @@ scan_output="${scan_output//$'\n'/'%0A'}"
 # scan_output="${scan_output//$'\r'/'%0D'}"
 
 #Echo scan function output
-echo $scan_output
+echo -e "$scan_output"
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$(echo -e $scan_output)"

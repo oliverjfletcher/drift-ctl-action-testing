@@ -60,8 +60,8 @@ scan_output(){
 # Run scan function to run scan
 scan_output=$(scan_output)
 
-# Escape scan output to handle multilines
-scan_output="${scan_output//$'\n'/'%0A'}"
+# # Escape scan output to handle multilines
+# scan_output="${scan_output//$'\n'/'%0A'}"
 
 #Echo scan function output
 echo -e "$scan_output"

@@ -51,17 +51,17 @@ scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
   exit_code=$?
   if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; then
-    echo $scan_output
+    echo "$scan_output"
     exit 1
   else
-    echo $scan_output
+    echo "$scan_output"
   fi
 }
 # Run scan function to run scan
 scan_output=$(scan_output)
 
 #Echo scan function output
-echo -e "$scan_output"
+echo $scan_output
 
 # Escape scan output to handle multilines
 scan_output="${scan_output//$'\n'/'%0A'}"

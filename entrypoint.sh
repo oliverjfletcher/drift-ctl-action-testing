@@ -46,7 +46,7 @@ install_driftctl || log_error "Fail to install driftctl"
 qflag=""
 quiet_flag
 
-# Get exit code for scan, format output and set ouput
+# Get exit code for scan, format output and exit
 scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
   exit_code=$?

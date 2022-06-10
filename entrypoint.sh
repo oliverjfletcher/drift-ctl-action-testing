@@ -60,11 +60,11 @@ scan_output(){
 # Run scan function to run scan
 scan_output=$(scan_output)
 
-# # Escape scan output to handle multilines
-# scan_output="${scan_output//$'\n'/'%0A'}"
-
 #Echo scan function output
 echo -e "$scan_output"
+
+# Escape scan output to handle multilines
+scan_output="${scan_output//$'\n'/'%0A'}"
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

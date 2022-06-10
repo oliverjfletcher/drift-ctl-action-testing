@@ -61,7 +61,7 @@ scan_output(){
     exit 1
   fi
 }
-# Run scan function and store in variable
+# Run scan function and pass in argument
 scan_output $val1
 
 # Set output to be used for other Github Actions jobs

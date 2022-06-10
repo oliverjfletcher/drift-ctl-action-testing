@@ -52,18 +52,19 @@ scan_output(){
   exit_code=$?
   if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; then
     scan_output="${scan_output//$'\n'/'%0A'}"
-    echo -e "$scan_output"
+    echo "$scan_output"
     exit 1
   else
     scan_output="${scan_output//$'\n'/'%0A'}"
-    echo -e "$scan_output"
+    echo "$scan_output"
+    exit 1
   fi
 }
-# Run scan function to run scan
-scan_output=$(scan_output)
+# Run scan function and store in variable
+scan_output=$(echo -e "$(scan_output)")
 
 #Echo scan function output
-echo $scan_output
+echo -e "$scan_output"
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

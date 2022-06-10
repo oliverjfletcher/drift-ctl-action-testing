@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 log_error() {
   echo $1
@@ -67,6 +67,6 @@ scan_output=$(scan_output 2>&1)
 echo -e "$scan_output"
 
 # Set output to be used for other Github Actions jobs
-echo "::set-output name=driftctl::$(echo -e $scan_output)"
+echo "::set-output name=driftctl::$scan_output"
 
 

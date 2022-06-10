@@ -51,9 +51,11 @@ scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
   exit_code=$?
   if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; then
+    scan_output="${scan_output//$'\n'/'%0A'}"
     echo -e "$scan_output"
     exit 1
   else
+    scan_output="${scan_output//$'\n'/'%0A'}"
     echo -e "$scan_output"
   fi
 }
@@ -62,9 +64,6 @@ scan_output=$(scan_output)
 
 #Echo scan function output
 echo $scan_output
-
-# Escape scan output to handle multilines
-scan_output="${scan_output//$'\n'/'%0A'}"
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

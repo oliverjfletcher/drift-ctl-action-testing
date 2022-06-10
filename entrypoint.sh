@@ -61,7 +61,7 @@ scan_output(){
   fi
 }
 # Run scan function and store in variable
-scan_output=$(echo -e "$(scan_output)")
+scan_output=$(scan_output 2>&1) 
 
 #Echo scan function output
 echo "$scan_output"

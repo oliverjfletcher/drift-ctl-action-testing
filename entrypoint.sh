@@ -58,7 +58,12 @@ scan_output(){
   fi
 }
 # Run scan function to run scan
-echo scan_output=$(scan_output)
+scan_output=$(scan_output)
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"
+
+#Echo scan function output
+echo $scan_output
+
+

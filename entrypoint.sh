@@ -48,9 +48,10 @@ quiet_flag
 
 # Get exit code for scan, format output and exit
 scan_output(){
+  local arg1=$1
   scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
   exit_code=$?
-  if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; then
+  if [[ $exit_code -eq 0 || $exit_code -eq 1 && $arg1 != "val1" ]]; then
     scan_output="${scan_output//$'\n'/'%0A'}"
     echo "$scan_output"
     exit 1
@@ -61,10 +62,7 @@ scan_output(){
   fi
 }
 # Run scan function and store in variable
-scan_output=$(scan_output 2>&1)
-
-#Echo scan function output
-echo -e "$scan_output"
+scan_output $val1
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

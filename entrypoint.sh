@@ -50,11 +50,12 @@ quiet_flag
 scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
   exit_code=$?
-  if [ "$exit_code" -ne 2 ]; then
+  if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; then
+    echo $scan_output
     exit 1
   else
-    echo $scan_output
     scan_output="${scan_output//$'\n'/'%0A'}"
+    echo $scan_output
   fi
 }
 # Run scan function to run scan

@@ -51,16 +51,17 @@ scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
   exit_code=$?
   if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; then
-    scan_output="${scan_output//$'\n'/'%0A'}"
+    # scan_output="${scan_output//$'\n'/'%0A'}"
     echo "$scan_output"
     exit 1
   else
-    scan_output="${scan_output//$'\n'/'%0A'}"
+    # scan_output="${scan_output//$'\n'/'%0A'}"
     echo "$scan_output"
     exit 1
   fi
 }
 # Run scan function and store in variable
+
 scan_output=$(scan_output)
 # scan_output="${scan_output//'%'/'%25'}"
 scan_output="${scan_output//$'\n'/'%0A'}"

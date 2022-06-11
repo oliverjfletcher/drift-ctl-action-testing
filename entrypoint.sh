@@ -63,7 +63,10 @@ scan_output(){
   fi
 }
 # Run scan function and pass in argument
-scan_output $val1
+scan_output=$(scan_output $val1)
+
+#Format output again to be consumed by other Github Actions jobs
+scan_output="${output//'%'/'%25'}"
 
 # Set output to be used for other Github Actions jobs
 echo ::set-output name=driftctl::$(echo $scan_output)

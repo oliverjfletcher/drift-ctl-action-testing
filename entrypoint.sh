@@ -66,7 +66,7 @@ scan_output(){
 scan_output=$(scan_output $val1)
 
 #Format output again to be consumed by console and Github Actions jobs
-scan_output="${scan_output //'%'/'%25'}"
+scan_output="${scan_output//$'\n'/'%0A'}"
 
 # Echo scan output to be consumed through Github Actions runner console
 echo -e "$scan_output"

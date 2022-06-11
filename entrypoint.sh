@@ -62,8 +62,7 @@ scan_output(){
   fi
 }
 # Run scan function and pass in argument
-scan_output=$(scan_output $val1)
-# scan_output=$(scan_output)
+scan_output="$(scan_output; exit 1)"
 
 # Format output to be consumed by Github Actions runner console
 scan_output="${scan_output//'%'/'%25'}"

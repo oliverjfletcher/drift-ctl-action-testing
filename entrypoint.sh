@@ -55,14 +55,14 @@ scan_output(){
   if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; 
   then
     echo -e "$scan_output"
-    return
+    return $exit_code
   else
     echo -e "$scan_output"
-    return
+    return $exit_code
   fi
 }
 # Run scan function and pass in argument
-scan_output="$(scan_output; exit 1)"
+scan_output=$(scan_output)
 
 # Format output to be consumed by Github Actions runner console
 scan_output="${scan_output//'%'/'%25'}"

@@ -66,6 +66,6 @@ scan_output(){
 scan_output $val1
 
 # Set output to be used for other Github Actions jobs
-echo "::set-output name=driftctl::$scan_output"
+echo ::set-output name=driftctl::$(echo $scan_output)
 
 

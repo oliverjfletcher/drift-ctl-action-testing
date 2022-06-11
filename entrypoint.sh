@@ -53,11 +53,9 @@ scan_output(){
   exit_code=$?
   if [[ $exit_code -eq 0 || $exit_code -eq 1 && $arg1 != "val1" ]]; 
   then
-    # scan_output="${scan_output//'%'/'%25'}"
     echo -e "$scan_output"
     exit 1
   else
-    # scan_output="${scan_output//'%'/'%25'}"
     echo -e "$scan_output"
     exit 1
   fi
@@ -65,7 +63,7 @@ scan_output(){
 # Run scan function and pass in argument
 scan_output=$(scan_output $val1)
 
-# Format output again to be consumed by console
+# Format output to be consumed by Github Actions runner console
 scan_output="${scan_output//'%'/'%25'}"
 
 # Echo scan output to be consumed through Github Actions runner console

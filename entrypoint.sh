@@ -48,18 +48,12 @@ quiet_flag
 
 # Get exit code for scan, format output and exit
 scan_output(){
-  local arg1=$1
-  scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
-  exit_code=$?
+  # local arg1=$1
   # if [[ $exit_code -eq 0 || $exit_code -eq 1 && $arg1 != "val1" ]]; 
-  if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; 
-  then
-    echo -e "$scan_output"
-    return $exit_code
-  else
-    echo -e "$scan_output"
-    return $exit_code
-  fi
+  # if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; 
+  # then
+    scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
+    exit 1
 }
 # Run scan function and pass in argument
 scan_output=$(scan_output)

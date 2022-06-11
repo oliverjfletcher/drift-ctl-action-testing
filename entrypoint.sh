@@ -55,10 +55,10 @@ scan_output(){
   if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; 
   then
     echo -e "$scan_output"
-    exit 1
+    return
   else
     echo -e "$scan_output"
-    exit 1
+    return
   fi
 }
 # Run scan function and pass in argument

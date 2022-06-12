@@ -55,7 +55,7 @@ scan_output(){
     return $exit_code
 }
 
-# Run scan function 
+# Run scan function and store in variable
 scan_output=$(scan_output)
 
 # Store exit code from scan command
@@ -68,8 +68,8 @@ exit_code(){
     echo -e "$scan_output"
     exit 1
   else
-    echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
+    echo -e "$scan_output"
   fi
 }
 # Run exit code function 

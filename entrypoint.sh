@@ -57,7 +57,7 @@ scan_output(){
 # Run scan function 
 scan_output=$(scan_output)
 
-# Check if exit code equal to too as scan return does not cause job failure
+# Check exit code, as scan return does not cause Github Action job failure
 exit_code(){
   if [ "$exit_code" == "2" ]; then
     exit 1

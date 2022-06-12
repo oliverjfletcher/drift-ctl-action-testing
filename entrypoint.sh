@@ -51,14 +51,14 @@ scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
   echo $?
   exit_code=$?
-  if [[ "$exit_code" -eq 0 || "$exit_code" -eq 1 ]]; then
-    scan_output="${scan_output//$'\r'/'%0D'}"
-    echo -e "$scan_output"
-    exit $exit_code
-  else
+  if [ "$exit_code" -eq 2 ]; then
     scan_output="${scan_output//$'\r'/'%0D'}"
     echo -e "$scan_output"
     exit 1
+  else
+    scan_output="${scan_output//$'\r'/'%0D'}"
+    echo -e "$scan_output"
+    exit $exit_code
   fi
 }
 

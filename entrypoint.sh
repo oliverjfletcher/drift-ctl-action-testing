@@ -50,6 +50,8 @@ quiet_flag
 scan_output(){
     scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
     exit_code=$?
+    scan_output="${scan_output//$'\n'/'%0A'}"
+    echo -e "$scan_output"
     return $exit_code
 }
 
@@ -60,8 +62,6 @@ scan_output=$(scan_output)
 exit_code=$?
 
 echo -e "$scan_output"
-
-scan_output="${scan_output//$'\n'/'%0A'}"
 
 # Check exit code, as scan return does not cause Github Action job failure
 exit_code(){

@@ -62,7 +62,7 @@ exit_code=$?
 
 # Check exit code, as scan function return does not cause Github Action job failure
 exit_code(){
-  if [ "$exit_code" -eq 2 ]; then
+  if [[ "$exit_code" -eq 1 || "$exit_code" -eq 2 ]]; then
     exit 1
   fi
 }

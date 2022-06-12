@@ -58,6 +58,9 @@ scan_output(){
 # Run scan function 
 scan_output=$(scan_output)
 
+# Set output to be used for other Github Actions jobs
+echo "::set-output name=driftctl::$scan_output"
+
 # Store exit code from scan command
 exit_code=$?
 
@@ -70,12 +73,6 @@ exit_code(){
 # Run exit code function 
 exit_code
 
-# # Echo scan output to Github Actions runner console
-# echo -e "$scan_output"
 
-# scan_output="${scan_output//$'\r'/'%0D'}"
-
-# Set output to be used for other Github Actions jobs
-echo "::set-output name=driftctl::$scan_output"
 
 

@@ -55,7 +55,7 @@ scan_output(){
 }
 # Run scan function and pass in argument
 scan_output=$(scan_output)
-
+echo $?
 # Format output to be consumed by Github Actions runner console
 scan_output="${scan_output//'%'/'%25'}"
 

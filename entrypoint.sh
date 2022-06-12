@@ -65,7 +65,7 @@ scan_output(){
 scan_output=$(scan_output)
 
 # scan_output="${scan_output//$'\r'/'%0D'}"
-scan_output="${scan_output//$'\n'/'%0A'}"
+# scan_output="${scan_output//$'\n'/'%0A'}"
 
 echo -e "$scan_output"
 

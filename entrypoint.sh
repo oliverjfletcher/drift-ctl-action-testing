@@ -63,21 +63,17 @@ exit_code=$?
 
 # Check exit code, as scan function return does not cause Github Action job failure
 exit_code(){
-  if [ "$exit_code" -eq 1 ]; then
+  if [[ "$exit_code" -eq 1 || "$exit_code" -eq 2 ]]; then
+    scan_output="${scan_output//$'\r'/'%0D'}"
+    echo -e "$scan_output"
     exit 1
+  else
+    echo -e "$scan_output"
+    scan_output="${scan_output//$'\n'/'%0A'}"
   fi
 }
 # Run exit code function 
 exit_code
-
-# Format scan output for Github Action runner console
-scan_output="${scan_output//$'\r'/'%0D'}"
-
-# Echo scan output to Github Action runner console
-echo -e "$scan_output"
-
-# Format scan output for GitHub comment
-scan_output="${scan_output//$'\n'/'%0A'}"
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

@@ -57,10 +57,10 @@ scan_output(){
 scan_output=$(scan_output)
 
 exit_code(){
-  if [ "$exit_code" == '2' ]; then
+  if [ "$exit_code" == "2" ]; then
     exit 1
   else 
-    exit 
+    continue
   fi
 }
 

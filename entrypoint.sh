@@ -76,5 +76,11 @@ exit_code(){
 # Run exit code function 
 exit_code
 
+scan_output="${scan_output//$'\r'/'%0D'}"
+
+echo -e "$scan_output"
+
+scan_output="${scan_output//$'\n'/'%0A'}"
+
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

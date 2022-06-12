@@ -48,8 +48,10 @@ quiet_flag
 
 # Get exit code for scan, format output and return exit code from scan
 scan_output(){
-    scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)" 
+    scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
+    scan_output="${scan_output//'%'/'%25'}"
     scan_output="${scan_output//$'\n'/'%0A'}"
+    scan_output="${scan_output//$'\r'/'%0D'}"
     exit_code=$?
     echo -e $scan_output
     return $exit_code

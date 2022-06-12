@@ -50,14 +50,16 @@ quiet_flag
 scan_output(){
     scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
     exit_code=$?
-    scan_output="${scan_output//'%'/'%25'}"
-    scan_output="${scan_output//$'\n'/'%0A'}"
     # scan_output="${scan_output//$'\r'/'%0D'}"
-    echo -e $scan_output
+    scan_output="${scan_output//$'\n'/'%0A'}"
+    echo -e "$scan_output"
     return $exit_code
 }
 # Run scan function and pass in argument
 scan_output=$(scan_output)
+
+# scan_output="${scan_output//'%'/'%25'}"
+
 
 exit_code(){
   if [ "$exit_code" == "2" ]; then
@@ -67,8 +69,8 @@ exit_code(){
 
 exit_code
 
-# Echo scan output to be consumed through Github Actions runner console
-echo -e "$scan_output"
+# # Echo scan output to be consumed through Github Actions runner console
+# echo -e "$scan_output"
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

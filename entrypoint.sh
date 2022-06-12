@@ -69,7 +69,7 @@ exit_code(){
 # Run exit code function 
 exit_code
 
-scan_output="${scan_output//$'\n'/'%0A'}"
+scan_output="${scan_output//'%'/'%25'}"
 
 echo -e "$scan_output"
 

@@ -69,8 +69,10 @@ exit_code(){
 # Run exit code function 
 exit_code
 
+# Format output for Github Actions runner console and output
 scan_output="${scan_output//'%'/'%25'}"
 
+# Echo scan output to Github Actions runner console
 echo -e "$scan_output"
 
 # Set output to be used for other Github Actions jobs

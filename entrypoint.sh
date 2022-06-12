@@ -67,7 +67,8 @@ exit_code(){
 exit_code
 
 # Format output to be consumed by Github Actions runner console
-scan_output="${scan_output//'%'/'%25'}"
+scan_output="${scan_output//$'\n'/'%0A'}"
+# scan_output="${scan_output//'%'/'%25'}"
 
 # Echo scan output to be consumed through Github Actions runner console
 echo -e "$scan_output"

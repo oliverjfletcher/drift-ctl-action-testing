@@ -67,7 +67,6 @@ exit_code(){
   if [ "$exit_code" -eq 2 ]; then
     scan_output="${scan_output//$'\r'/'%0D'}"
     echo -e "$scan_output"
-    echo "hello world"
     exit 1
   else
     scan_output="${scan_output//$'\n'/'%0A'}"

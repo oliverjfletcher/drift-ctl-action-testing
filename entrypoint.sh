@@ -64,8 +64,6 @@ exit_code=$?
 exit_code(){
   if [ "$exit_code" -eq 2 ]; then
     exit 1
-  else 
-    exit 0
   fi
 }
 # Run exit code function 

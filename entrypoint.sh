@@ -61,6 +61,7 @@ exit_code(){
     exit 1
   else 
     exit 
+  fi
 }
 
 exit_code

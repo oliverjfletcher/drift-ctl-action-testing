@@ -58,7 +58,7 @@ scan_output(){
 # Run scan function 
 scan_output=$(scan_output)
 
-# Store exit code for scan
+# Store exit code from scan command
 exit_code=$?
 
 # Check exit code, as scan function return does not cause Github Action job failure

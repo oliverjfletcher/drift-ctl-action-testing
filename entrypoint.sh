@@ -48,9 +48,10 @@ quiet_flag
 
 # Get exit code for scan, format output and return exit code from scan
 scan_output(){
-  scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
-  echo $?
-  exit_code=$?
+
+scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
+exit_code=$?
+
   if [ "$exit_code" -eq 2 ]; then
     scan_output="${scan_output//$'\r'/'%0D'}"
     echo -e "$scan_output"

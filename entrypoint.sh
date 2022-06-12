@@ -51,8 +51,8 @@ scan_output(){
     scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
     exit_code=$?
     scan_output="${scan_output//'%'/'%25'}"
-    # scan_output="${scan_output//$'\n'/'%0A'}"
-    scan_output="${scan_output//$'\r'/'%0D'}"
+    scan_output="${scan_output//$'\n'/'%0A'}"
+    # scan_output="${scan_output//$'\r'/'%0D'}"
     echo -e $scan_output
     return $exit_code
 }

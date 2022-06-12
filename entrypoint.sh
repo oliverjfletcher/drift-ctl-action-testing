@@ -49,10 +49,21 @@ quiet_flag
 # Get exit code for scan, format output and return exit code from scan
 scan_output(){
     scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)" 
-    exit 1
+    exit_code=$?
+    echo -e $scan_output
+    return $exit_code
 }
 # Run scan function and pass in argument
 scan_output=$(scan_output)
+
+exit_code(){
+  if $exit_code -eq 2; then
+    exit 1
+  else 
+    exit 
+}
+
+exit_code
 
 # Format output to be consumed by Github Actions runner console
 scan_output="${scan_output//'%'/'%25'}"

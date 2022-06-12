@@ -70,8 +70,8 @@ exit_code(){
 # Run exit code function 
 exit_code
 
-# Format output for Github Actions runner console and output
-scan_output="${scan_output//'%'/'%25'}"
+# # Format output for Github Actions runner console and output
+# scan_output="${scan_output//'%'/'%25'}"
 # scan_output="${scan_output//$'\n'/'%0A'}"
 scan_output="${scan_output//$'\r'/'%0D'}"
 

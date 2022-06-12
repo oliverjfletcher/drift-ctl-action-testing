@@ -46,17 +46,15 @@ install_driftctl || log_error "Fail to install driftctl"
 qflag=""
 quiet_flag
 
-# Get exit code for scan, format output and exit
+# Get exit code for scan, format output and return exit code from scan
 scan_output(){
-  # local arg1=$1
-  # if [[ $exit_code -eq 0 || $exit_code -eq 1 && $arg1 != "val1" ]]; 
-  # if [[ $exit_code -eq 0 || $exit_code -eq 1 ]]; 
-  # then
-    scan_output="$(driftctl scan $qflag $INPUT_ARGS)"
-    exit 1
+    scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)" 
+    exit_code=$?
+    echo -e $scan_output
+    return $exit_code
 }
 # Run scan function and pass in argument
-scan_output=$(scan_output;exit 1)
+scan_output=$(scan_output)
 
 # Format output to be consumed by Github Actions runner console
 scan_output="${scan_output//'%'/'%25'}"

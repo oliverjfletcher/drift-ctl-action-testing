@@ -57,11 +57,10 @@ scan_output(){
 # Run scan function 
 scan_output=$(scan_output)
 
-echo $?
-
 # Check exit code, as scan return does not cause Github Action job failure
 exit_code(){
-  if [ "$exit_code" == "2" ]; then
+  if [ $exit_code == "2" ]; then
+    echo $exit_code
     exit 1
   fi
 }

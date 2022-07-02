@@ -67,13 +67,14 @@ exit_code(){
   if [ "$exit_code" -eq 2 ]; then
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
-    echo 1
-    return
+    echo "fail"
+    echo $exit_code
+    exit 1
   else
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
-    echo 2
-    return
+    echo "success"
+    echo $exit_code
   fi
 }
 # Run exit code function 

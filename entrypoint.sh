@@ -68,12 +68,12 @@ exit_code(){
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
     echo 1
-    exit 1
+    return
   else
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
     echo 2
-    exit 1
+    return
   fi
 }
 # Run exit code function 

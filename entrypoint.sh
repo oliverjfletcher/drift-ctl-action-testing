@@ -70,12 +70,12 @@ exit_code(){
     exit 1
   else
     scan_output="${scan_output//$'\r'/'%0D'}"
-    echo "::set-output name=driftctl::$scan_output"
+    # echo "::set-output name=driftctl::$scan_output"
     echo -e "$scan_output"
   fi
 }
 # Run exit code function 
 exit_code
 
-# Set output to be used for other Github Actions jobs
-# echo "::set-output name=driftctl::$scan_output"
+Set output to be used for other Github Actions jobs
+echo "::set-output name=driftctl::$scan_output"

@@ -74,5 +74,5 @@ exit_code(){
 # Run exit code function 
 exit_code
 
-Set output to be used for other Github Actions jobs
+# Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

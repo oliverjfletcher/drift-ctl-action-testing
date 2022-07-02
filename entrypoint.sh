@@ -53,13 +53,13 @@ scan_output(){
   exit_code=$?
   if [ "$exit_code" -eq 2 ]; then
     scan_output="${scan_output//$'\r'/'%0D'}"
-    echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
+    echo -e "$scan_output"
     exit 1
   else
     scan_output="${scan_output//$'\r'/'%0D'}"
-    echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
+    echo -e "$scan_output"
   fi
   # return $exit_code
 }

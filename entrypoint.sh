@@ -62,7 +62,7 @@ scan_output=$(scan_output)
 # Store exit code from scan command
 exit_code=$?
 
-Check exit code, as scan function return does not cause Github Action job failure for exit code 2
+# Check exit code, as scan function return does not cause Github Action job failure for exit code 2
 exit_code(){
   if [ "$exit_code" -eq 2 ]; then
     exit 1
@@ -77,7 +77,7 @@ exit_code(){
     echo $exit_code
   fi
 }
-Run exit code function 
+# Run exit code function 
 exit_code
 
 # Set output to be used for other Github Actions jobs

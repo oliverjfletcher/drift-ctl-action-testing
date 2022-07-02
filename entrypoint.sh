@@ -52,7 +52,7 @@ scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
   exit_code=$?
   echo -e "$scan_output"
-  scan_output="${scan_output//$'\n'/'%0A'}"
+  scan_output="${scan_output//$'\r'/'%0D'}"
   return $exit_code
 }
 
@@ -66,12 +66,11 @@ exit_code=$?
 exit_code(){
   if [ "$exit_code" -eq 2 ]; then
     scan_output="${scan_output//$'\r'/'%0D'}"
-    echo "::set-output name=driftctl::$scan_output"
-    scan_output="${scan_output//$'\n'/'%0A'}"
     echo -e "$scan_output"
     exit 1
   else
-    scan_output="${scan_output//$'\n'/'%0A'}"
+    scan_output="${scan_output//$'\r'/'%0D'}"
+    echo "::set-output name=driftctl::$scan_output"
     echo -e "$scan_output"
   fi
 }

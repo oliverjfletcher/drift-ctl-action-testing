@@ -62,9 +62,15 @@ scan_output=$(scan_output)
 # Store exit code from scan command
 exit_code=$?
 
+
+if <condition> ; then
+  echo "Game over!"
+  exit 1
+fi
+
 # Check exit code, as scan function return does not cause Github Action job failure for exit code 2
 exit_code(){
-  if $exit_code -eq 2; then
+  if [$exit_code == 2] ; then
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
     echo "fail"

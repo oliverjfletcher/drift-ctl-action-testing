@@ -64,12 +64,12 @@ exit_code=$?
 
 # Check exit code, as scan function return does not cause Github Action job failure for exit code 2
 exit_code(){
-  if [ "$exit_code" -eq 2 ]; then
+  if $exit_code -eq 2; then
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
     echo "fail"
     echo $exit_code
-  exit 1
+    exit 1
   else
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"

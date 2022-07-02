@@ -51,8 +51,8 @@ quiet_flag
 scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
   exit_code=$?
-  scan_output="${scan_output//$'\r'/'%0D'}"
-  echo -e "$scan_output"
+  # scan_output="${scan_output//$'\r'/'%0D'}"
+  # echo -e "$scan_output"
   return $exit_code
 }
 
@@ -67,10 +67,13 @@ exit_code(){
   if [ "$exit_code" -eq 2 ]; then
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
+    echo 1
     exit 1
   else
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
+    echo 2
+    exit 1
   fi
 }
 # Run exit code function 

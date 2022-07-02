@@ -53,7 +53,7 @@ scan_output(){
     # scan_output="${scan_outpu//$'\n'/\\n}"
     # scan_output="${scan_output//'%'/'%25'}"
     scan_output="${scan_output//$'\n'/'%0A'}"
-    # scan_output="${scan_output//$'\r'/'%0D'}"
+    scan_output="${scan_output//$'\r'/'%0D'}"
     echo $scan_output
   exit_code=$?
   return $exit_code

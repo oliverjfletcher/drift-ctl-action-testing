@@ -69,7 +69,7 @@ exit_code(){
     scan_output="${scan_output//$'\n'/'%0A'}"
     echo "fail"
     echo $exit_code
-    exit 1
+  exit 1
   else
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"

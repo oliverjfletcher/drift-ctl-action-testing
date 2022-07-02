@@ -70,10 +70,10 @@ exit_code(){
     echo "success"
     echo $exit_code
   else
-    echo -e "$scan_output"
-    scan_output="${scan_output//$'\n'/'%0A'}"
-    echo "fail"
-    echo $exit_code
+    # echo -e "$scan_output"
+    # scan_output="${scan_output//$'\n'/'%0A'}"
+    # echo "fail"
+    # echo $exit_code
     exit 1
   fi
 }

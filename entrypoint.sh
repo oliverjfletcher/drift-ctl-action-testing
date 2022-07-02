@@ -47,7 +47,7 @@ qflag=""
 quiet_flag
 
 
-]# Get exit code for scan, format output and return exit code from scan
+# Get exit code for scan, format output and return exit code from scan
 scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
   exit_code=$?

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 log_error() {
   echo $1
@@ -46,25 +46,24 @@ install_driftctl || log_error "Fail to install driftctl"
 qflag=""
 quiet_flag
 
-
-# Get exit code for scan, format output and return exit code from scan
+# Run scan, store exit code, format output, output scan in runner and return exit code
 scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
-  exit_code=$?
+  scan_exit=$?
   scan_output="${scan_output//$'\r'/'%0D'}"
   echo -e "$scan_output"
-  return $exit_code
+  return $scan_exit
 }
 
 # Run scan function and store in variable
 scan_output=$(scan_output)
 
-# Store exit code from scan command
-exit_code=$?
+# Store exit code from scan command run in scan function
+scan_exit=$?
 
-# Check exit code, as scan function return does not cause Github Action job failure for exit code 2
-exit_code(){
-  if [ "$exit_code" -eq 2 ]; then
+# Check exit code, fail job if scan command exit code 2, then format scan output for GitHub comment
+scan_exit_code(){
+  if [ "$scan_exit" -eq 1 || "$scan_exit" -eq 2 ]; then
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
     exit 1
@@ -75,7 +74,7 @@ exit_code(){
 }
 
 # Run exit code function 
-exit_code
+scan_exit_code
 
 # Set output to be used for other Github Actions jobs
 echo "::set-output name=driftctl::$scan_output"

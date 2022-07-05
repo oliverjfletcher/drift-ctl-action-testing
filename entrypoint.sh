@@ -66,7 +66,6 @@ scan_exit_code(){
   if [ "$scan_exit" -eq 0 ]; then
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
-    exit 0
   else
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"

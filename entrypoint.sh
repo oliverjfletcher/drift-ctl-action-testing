@@ -66,10 +66,10 @@ scan_exit_code(){
   if [ "$exit_code" -eq 2 ]; then
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
+    exit 1
   else
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
-    exit 1
   fi
 }
 

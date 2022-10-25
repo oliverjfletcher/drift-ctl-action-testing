@@ -52,7 +52,7 @@ scan_output(){
   scan_exit=$?
   scan_output="${scan_output//$'\n'/'%0A'}"
   scan_output="${scan_output//'%'/'%25'}"
-  scan_output="${scan_output//$'\r'/'%0D'}"
+  # scan_output="${scan_output//$'\r'/'%0D'}"
   echo -e "$scan_output"
   return $scan_exit
 }
@@ -69,14 +69,14 @@ scan_exit_code(){
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
     scan_output="${scan_output//'%'/'%25'}"
-    scan_output="${scan_output//$'\r'/'%0D'}"
+    # scan_output="${scan_output//$'\r'/'%0D'}"
     echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
     exit 1
   else
     echo -e "$scan_output"
     scan_output="${scan_output//$'\n'/'%0A'}"
     scan_output="${scan_output//'%'/'%25'}"
-    scan_output="${scan_output//$'\r'/'%0D'}"
+    # scan_output="${scan_output//$'\r'/'%0D'}"
     echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
   fi
 }

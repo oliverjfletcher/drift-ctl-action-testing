@@ -51,6 +51,7 @@ scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
   scan_exit=$?
   # scan_output="${scan_output//$'\n'/'%0A'}"
+  scan_output=$(echo $scan_output | tr '\n' ' ')
   echo -e "$scan_output"
   return $scan_exit
 }
@@ -66,12 +67,14 @@ scan_exit_code(){
   if [[ "$scan_exit" -eq 1 || "$scan_exit" -eq 2 ]]; then
     echo -e "$scan_output"
     # scan_output="${scan_output//$'\n'/'%0A'}"
-    echo 'driftctl<<'$scan_output'' >> $GITHUB_OUTPUT
+    scan_output==$(echo $scan_output | tr '\n' ' ')
+    echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
     exit 1
   else
     echo -e "$scan_output"
     # scan_output="${scan_output//$'\n'/'%0A'}"
-    echo 'driftctl<<'$scan_output'' >> $GITHUB_OUTPUT
+    scan_output=$(echo $scan_output | tr '\n' ' ')
+    echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
   fi
 }
 

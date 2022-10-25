@@ -66,12 +66,12 @@ scan_exit_code(){
   if [[ "$scan_exit" -eq 1 || "$scan_exit" -eq 2 ]]; then
     echo -e "$scan_output"
     # scan_output="${scan_output//$'\n'/'%0A'}"
-    echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
+    echo 'driftctl<<'$scan_output'' >> $GITHUB_OUTPUT
     exit 1
   else
     echo -e "$scan_output"
     # scan_output="${scan_output//$'\n'/'%0A'}"
-    echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
+    echo 'driftctl<<'$scan_output'' >> $GITHUB_OUTPUT
   fi
 }
 

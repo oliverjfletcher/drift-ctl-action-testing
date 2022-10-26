@@ -67,7 +67,7 @@ scan_exit_code(){
     echo -e "$scan_output"
     # scan_output="${scan_output//$'\n'/'%0A'}"
     # echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
-    echo -e "$scan_output" >> $GITHUB_ENV
+    echo -e 'driftctl='$scan_output'' >> $GITHUB_ENV
     # echo 'driftctl<<EOF' >> $GITHUB_ENV
     # $scan_output >> $GITHUB_ENV
     # echo 'EOF' >> $GITHUB_ENV
@@ -76,7 +76,7 @@ scan_exit_code(){
     echo -e "$scan_output"
     # scan_output="${scan_output//$'\n'/'%0A'}"
     # echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
-    echo -e "$scan_output" >> $GITHUB_ENV
+    echo -e 'driftctl='$scan_output'' >> $GITHUB_ENV
     # echo 'driftctl<<EOF' >> $GITHUB_ENV
     # $scan_output >> $GITHUB_ENV
     # echo 'EOF' >> $GITHUB_ENV

@@ -50,7 +50,7 @@ quiet_flag
 scan_output(){
   scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
   scan_exit=$?
-  scan_output="${scan_output//$'\r'/'%0A'}"
+  # scan_output="${scan_output//$'\r'/'%0A'}"
   echo -e "$scan_output"
   return $scan_exit
 }
@@ -67,17 +67,19 @@ scan_exit_code(){
     echo -e "$scan_output"
     # scan_output="${scan_output//$'\n'/'%0A'}"
     # echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
-    echo 'driftctl<<EOF' >> $GITHUB_ENV
-    $scan_output >> $GITHUB_ENV
-    echo 'EOF' >> $GITHUB_ENV
+    echo -e "$scan_output" >> $GITHUB_ENV
+    # echo 'driftctl<<EOF' >> $GITHUB_ENV
+    # $scan_output >> $GITHUB_ENV
+    # echo 'EOF' >> $GITHUB_ENV
     exit 1
   else
     echo -e "$scan_output"
     # scan_output="${scan_output//$'\n'/'%0A'}"
     # echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
-    echo 'driftctl<<EOF' >> $GITHUB_ENV
-    $scan_output >> $GITHUB_ENV
-    echo 'EOF' >> $GITHUB_ENV
+    echo -e "$scan_output" >> $GITHUB_ENV
+    # echo 'driftctl<<EOF' >> $GITHUB_ENV
+    # $scan_output >> $GITHUB_ENV
+    # echo 'EOF' >> $GITHUB_ENV
   fi
 }
 

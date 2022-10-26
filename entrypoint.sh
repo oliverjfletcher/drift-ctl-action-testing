@@ -67,19 +67,21 @@ scan_exit_code(){
     echo -e "$scan_output"
     # scan_output="${scan_output//$'\n'/'%0A'}"
     # echo "driftctl="$scan_output"" >> $GITHUB_OUTPUT
-    delimiter="$(openssl rand -hex 8)"
-    echo "driftctl<<${delimiter}" >> "${GITHUB_OUTPUT}"
-    echo "$scan_output" >> "${GITHUB_OUTPUT}"
-    echo "${delimiter}" >> "${GITHUB_OUTPUT}"
+    # delimiter="$(openssl rand -hex 8)"
+    # echo "driftctl<<${delimiter}" >> "${GITHUB_OUTPUT}"
+    # echo "$scan_output" >> "${GITHUB_OUTPUT}"
+    # echo "${delimiter}" >> "${GITHUB_OUTPUT}"
+    echo ''$scan_output'<<EOF'  >> $GITHUB_OUTPUT
     exit 1
   else
     echo -e "$scan_output"
     # scan_output="${scan_output//$'\n'/'%0A'}"
     # echo "driftctl="$scan_output"" >> $GITHUB_OUTPUT
-    delimiter="$(openssl rand -hex 8)"
-    echo "driftctl<<${delimiter}" >> "${GITHUB_OUTPUT}"
-    echo "$scan_output" >> "${GITHUB_OUTPUT}"
-    echo "${delimiter}" >> "${GITHUB_OUTPUT}"
+    # delimiter="$(openssl rand -hex 8)"
+    # echo "driftctl<<${delimiter}" >> "${GITHUB_OUTPUT}"
+    # echo "$scan_output" >> "${GITHUB_OUTPUT}"
+    # echo "${delimiter}" >> "${GITHUB_OUTPUT}"
+    echo ''$scan_output'<<EOF'  >> $GITHUB_OUTPUT
   fi
 }
 

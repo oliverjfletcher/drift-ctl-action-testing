@@ -71,7 +71,7 @@ scan_exit_code(){
     # echo "driftctl<<${delimiter}" >> "${GITHUB_OUTPUT}"
     # echo "$scan_output" >> "${GITHUB_OUTPUT}"
     # echo "${delimiter}" >> "${GITHUB_OUTPUT}"
-    echo ''$scan_output'<<EOF'  >> $GITHUB_OUTPUT
+    echo 'driftctl='$scan_output''  >> $GITHUB_OUTPUT
     exit 1
   else
     echo -e "$scan_output"
@@ -81,7 +81,7 @@ scan_exit_code(){
     # echo "driftctl<<${delimiter}" >> "${GITHUB_OUTPUT}"
     # echo "$scan_output" >> "${GITHUB_OUTPUT}"
     # echo "${delimiter}" >> "${GITHUB_OUTPUT}"
-    echo ''$scan_output'<<EOF'  >> $GITHUB_OUTPUT
+    echo 'driftctl='$scan_output''  >> $GITHUB_OUTPUT
   fi
 }
 

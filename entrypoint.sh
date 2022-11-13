@@ -64,11 +64,13 @@ scan_exit=$?
 #Check exit code, fail job if scan command exit code 1 or 2, then format scan output for GitHub comment
 scan_exit_code(){
   if [[ "$scan_exit" -eq 1 || "$scan_exit" -eq 2 ]]; then
+    echo -e "$scan_output"
     echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT
     echo -e "$scan_output" >> $GITHUB_OUTPUT
     echo 'EOF' >> $GITHUB_OUTPUT
     exit 1
   else
+    echo -e "$scan_output"
     exit 0
   fi
 }

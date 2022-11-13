@@ -72,7 +72,7 @@ scan_exit_code(){
     # echo "${delimiter}" >> "${GITHUB_OUTPUT}"
     echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT
     scan_output="${scan_output//$'\n'/'%0A'}"
-    echo $scan_output >> $GITHUB_OUTPUT
+    echo -e "$scan_output" >> $GITHUB_OUTPUT
     echo 'EOF' >> $GITHUB_OUTPUT
     echo "TEST-0"
     exit 1

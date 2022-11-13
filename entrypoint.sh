@@ -61,52 +61,17 @@ scan_output=$(scan_output)
 # Store exit code from scan command run in scan function
 scan_exit=$?
 
-
 #Check exit code, fail job if scan command exit code 1 or 2, then format scan output for GitHub comment
 scan_exit_code(){
   if [[ "$scan_exit" -eq 1 || "$scan_exit" -eq 2 ]]; then
-    # echo -e "$scan_output"
-    # delimiter="$(openssl rand -hex 8)"
-    # echo "SCAN_OUTPUT<<<${delimiter}" >> "${GITHUB_OUTPUT}"
-    # echo -e $scan_output >> "${GITHUB_OUTPUT}"
-    # echo "${delimiter}" >> "${GITHUB_OUTPUT}"
     echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT
-    # scan_output="${scan_output//$'\n'/'%0A'}"
     echo -e "$scan_output" >> $GITHUB_OUTPUT
     echo 'EOF' >> $GITHUB_OUTPUT
-    echo "TEST-0"
     exit 1
   else
-    echo -e "$scan_output"
-    echo "TEST-1"
-    echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT
-    echo $scan_output >> $GITHUB_OUTPUT
-    echo 'EOF' >> $GITHUB_OUTPUT
     exit 0
   fi
 }
-
-# # Check exit code, fail job if scan command exit code 1 or 2, then format scan output for GitHub comment
-# scan_exit_code(){
-#   if [[ "$scan_exit" -eq 1 || "$scan_exit" -eq 2 ]]; then
-#     echo -e "$scan_output"
-#     # scan_output="${scan_output//$'\n'/'%0A'}"
-#     # echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
-#     echo -e 'driftctl='$scan_output'' >> $GITHUB_ENV
-#     # echo 'driftctl<<EOF' >> $GITHUB_ENV
-#     # $scan_output >> $GITHUB_ENV
-#     # echo 'EOF' >> $GITHUB_ENV
-#     exit 1
-#   else
-#     echo -e "$scan_output"
-#     # scan_output="${scan_output//$'\n'/'%0A'}"
-#     # echo "driftctl=$scan_output" >> $GITHUB_OUTPUT
-#     echo -e 'driftctl='$scan_output'' >> $GITHUB_ENV
-#     # echo 'driftctl<<EOF' >> $GITHUB_ENV
-#     # $scan_output >> $GITHUB_ENV
-#     # echo 'EOF' >> $GITHUB_ENV
-#   fi
-# }
 
 # Run exit code function 
 scan_exit_code

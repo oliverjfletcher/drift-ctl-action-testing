@@ -55,13 +55,22 @@ scan_output(){
   return $scan_exit
 }
 
+# Run scan, store exit code, format output, output scan in runner and return exit code
+scan_output(){
+  scan_output="$(driftctl scan $qflag $INPUT_ARGS;return)"
+  scan_exit=$?
+  scan_output="${scan_output//$'\r'/'%0D'}"
+  echo -e "$scan_output"
+  return $scan_exit
+}
+
 # Run scan function and store in variable
 scan_output=$(scan_output)
 
 # Store exit code from scan command run in scan function
 scan_exit=$?
 
-#Check exit code, fail job if scan command exit code 1 or 2, then format scan output for GitHub comment
+#Check exit code, echo scan, add delimiter, output to $GITHUB_OUTPUT, and fail job if scan exit code 1 or 2
 scan_exit_code(){
   if [[ "$scan_exit" -eq 1 || "$scan_exit" -eq 2 ]]; then
     echo -e "$scan_output"
@@ -71,7 +80,10 @@ scan_exit_code(){
     exit 1
   else
     echo -e "$scan_output"
-    exit 0
+    echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT
+    echo -e "$scan_output" >> $GITHUB_OUTPUT
+    echo 'EOF' >> $GITHUB_OUTPUT
+    exit $scan_exit
   fi
 }
 

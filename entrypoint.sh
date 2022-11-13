@@ -65,13 +65,13 @@ scan_exit=$?
 #Check exit code, fail job if scan command exit code 1 or 2, then format scan output for GitHub comment
 scan_exit_code(){
   if [[ "$scan_exit" -eq 1 || "$scan_exit" -eq 2 ]]; then
-    echo -e "$scan_output"
+    # echo -e "$scan_output"
     # delimiter="$(openssl rand -hex 8)"
     # echo "SCAN_OUTPUT<<<${delimiter}" >> "${GITHUB_OUTPUT}"
     # echo -e $scan_output >> "${GITHUB_OUTPUT}"
     # echo "${delimiter}" >> "${GITHUB_OUTPUT}"
     echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT
-    scan_output="${scan_output//$'\n'/'%0A'}"
+    # scan_output="${scan_output//$'\n'/'%0A'}"
     echo -e "$scan_output" >> $GITHUB_OUTPUT
     echo 'EOF' >> $GITHUB_OUTPUT
     echo "TEST-0"

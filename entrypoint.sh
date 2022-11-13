@@ -66,11 +66,11 @@ scan_exit=$?
 scan_exit_code(){
   if [[ "$scan_exit" -eq 1 || "$scan_exit" -eq 2 ]]; then
     echo -e "$scan_output"
+    echo "TEST-0"
     exit 1
   else
-    test="testing"
-    test="TESTING ${scan_output}"
-    echo $test
+    echo -e "$scan_output"
+    echo "TEST-1"
     echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT
     echo $scan_output >> $GITHUB_OUTPUT
     echo 'EOF' >> $GITHUB_OUTPUT

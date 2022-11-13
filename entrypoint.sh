@@ -68,11 +68,9 @@ scan_exit_code(){
     echo -e "$scan_output"
     exit 1
   else
-    echo -e "$scan_output"
-    delimiter="$(openssl rand -hex 8)"
-    echo "scan_output<<${delimiter}" >> "${GITHUB_OUTPUT}"
-    echo "${scan_output}" >> "${GITHUB_OUTPUT}"
-    echo "${delimiter}" >> "${GITHUB_OUTPUT}"
+    echo "scan_output<<EOF" >> $GITHUB_OUTPUT
+    echo -e "$scan_output" >> $GITHUB_OUTPUT
+    echo "EOF" >> $GITHUB_OUTPUT
     exit 0
   fi
 }

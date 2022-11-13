@@ -77,7 +77,7 @@ scan_exit_code(){
     echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT
     echo -e "$scan_output" >> $GITHUB_OUTPUT
     echo 'EOF' >> $GITHUB_OUTPUT
-    exit $scan_exit
+    exit 1
   else
     echo -e "$scan_output"
     echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT

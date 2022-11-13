@@ -62,21 +62,26 @@ scan_output=$(scan_output)
 scan_exit=$?
 
 #Check exit code, echo scan, add delimiter, output to $GITHUB_OUTPUT, and fail job if scan exit code 1 or 2
-scan_exit_code(){
+scan_exit_code($scan_exit){
   if [[ "$scan_exit" -eq 1 || "$scan_exit" -eq 2 ]]; then
     echo -e "$scan_output"
     echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT
     echo -e "$scan_output" >> $GITHUB_OUTPUT
     echo 'EOF' >> $GITHUB_OUTPUT
-    exit $scan_exit
+    echo "test0"
+    echo $scan_exit
+    exit 1
   else
     echo -e "$scan_output"
     echo 'SCAN_OUTPUT<<EOF' >> $GITHUB_OUTPUT
     echo -e "$scan_output" >> $GITHUB_OUTPUT
     echo 'EOF' >> $GITHUB_OUTPUT
+    echo "test1"
+    echo $scan_exit
     exit $scan_exit
   fi
 }
+
 
 # Run exit code function 
 scan_exit_code

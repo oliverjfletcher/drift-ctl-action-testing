@@ -69,8 +69,10 @@ scan_exit_code(){
     echo -e "$scan_output" >> $GITHUB_OUTPUT
     echo 'EOF' >> $GITHUB_OUTPUT
     exit $1
-  else [ $1 -eq 2 ]; then
+  elif [ $1 -eq 2 ]; then
     exit 1
+  else
+    exit $1
   fi
 }
 
